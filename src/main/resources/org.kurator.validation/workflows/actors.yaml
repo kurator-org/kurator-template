@@ -1,0 +1,6 @@
+imports:
+
+- classpath:/org/kurator/validation/types.yaml
+- classpath:/org/kurator/akka/actors.yaml
+
+types:
