@@ -1,0 +1,21 @@
+imports:
+
+- classpath:/org/kurator/validation/types.yaml
+- classpath:/org/kurator/akka/actors.yaml
+
+types:
+
+- id: CsvFileReader
+  type: Actor
+  properties:
+    actorClass: org.kurator.akka.actors.CsvFileReader
+
+- id: CsvFileWriter
+  type: Actor
+  properties:
+    actorClass: org.kurator.akka.actors.CsvFileWriter
+
+- id: JavaTemplateActor
+  type: Actor
+  properties:
+    actorClass: org.kurator.validation.actors.JavaTemplateActor

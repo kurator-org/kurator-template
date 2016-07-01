@@ -1,0 +1,41 @@
+imports:
+
+- classpath:/org/kurator/validation/actors.yaml
+
+components:
+
+- id: FileReader
+  type: CsvFileReader
+  properties:
+    parameters:
+      filePath: src/main/resources/org/kurator/validation/data/eight_specimen_records.csv
+
+- id: ExampleActor
+  type: JavaTemplateActor
+  properties:
+    parameters:
+      input: test
+    listensTo:
+      - !ref FileReader
+
+- id: FileWriter
+  type: CsvFileWriter
+  properties:
+    listensTo:
+      - !ref ExampleActor
+
+- id: ExampleWorkflow
+  type: Workflow
+  properties:
+    actors:
+      - !ref FileReader
+      - !ref ExampleActor
+      - !ref FileWriter
+    parameters:
+      in:
+        actor: !ref FileReader
+        parameter: filePath
+      out:
+        actor: !ref FileWriter
+        parameter: filePath
+
